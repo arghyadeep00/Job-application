@@ -66,13 +66,13 @@ const seedDatabase = async () => {
     console.log("👤 Seeding Admins...");
     const admins = await Admin.insertMany([
       {
-        name: "Arghya Admin",
+        name: "Arghya Banerjee",
         email: "admin@jobapp.com",
         password: adminPasswordHash,
         role: "admin",
       },
       {
-        name: "Sarah Talent",
+        name: "Neha Kapoor",
         email: "hr@jobapp.com",
         password: adminPasswordHash,
         role: "admin",
@@ -200,34 +200,34 @@ const seedDatabase = async () => {
     const jobs = await Job.insertMany(jobsData);
     console.log(`✅ Seeded ${jobs.length} Jobs`);
 
-    // 3. Seed Candidate Users
-    console.log("\n👥 Seeding Candidate Users...");
+    // 3. Seed Candidate Users (Indian Candidates)
+    console.log("\n👥 Seeding Candidate Users (Indian Candidates)...");
     const usersData = [
       {
-        firstname: "John",
-        middlename: "Robert",
-        lastname: "Doe",
-        email: "john.doe@example.com",
+        firstname: "Arjun",
+        middlename: "Kumar",
+        lastname: "Mehta",
+        email: "arjun.mehta@example.com",
         password: userPasswordHash,
         domain: "Full Stack",
         gender: "male",
         dob: new Date("1998-05-15"),
         location: "Bengaluru, Karnataka",
         phone: { countryCode: "+91", phoneNumber: "9876543210" },
-        skills: "React, Node.js, Express, MongoDB, TypeScript, Docker",
+        skills: "React, Node.js, Express, MongoDB, TypeScript, Docker, Redis",
         experience: { companyName: "InnovateTech Labs", year: 3 },
         avatar: {
           url: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=80",
-          public_id: "seed_avatar_john",
+          public_id: "seed_avatar_arjun",
         },
         resume: {
           url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-          public_id: "seed_resume_john",
+          public_id: "seed_resume_arjun",
         },
         education: [
           {
             level: "Class X",
-            institution: "St. Xavier's High School",
+            institution: "Delhi Public School, R.K. Puram",
             board: "CBSE",
             startDate: new Date("2013-04-01"),
             endDate: new Date("2014-03-31"),
@@ -235,7 +235,7 @@ const seedDatabase = async () => {
           },
           {
             level: "Class XII",
-            institution: "St. Xavier's Junior College",
+            institution: "Delhi Public School, R.K. Puram",
             board: "CBSE",
             startDate: new Date("2014-04-01"),
             endDate: new Date("2016-03-31"),
@@ -243,7 +243,7 @@ const seedDatabase = async () => {
           },
           {
             level: "Graduation",
-            institution: "National Institute of Technology",
+            institution: "National Institute of Technology (NIT Trichy)",
             board: "Autonomous",
             startDate: new Date("2016-08-01"),
             endDate: new Date("2020-05-31"),
@@ -255,38 +255,38 @@ const seedDatabase = async () => {
         role: "user",
       },
       {
-        firstname: "Jane",
-        lastname: "Smith",
-        email: "jane.smith@example.com",
+        firstname: "Ananya",
+        lastname: "Iyer",
+        email: "ananya.iyer@example.com",
         password: userPasswordHash,
         domain: "Frontend",
         gender: "female",
         dob: new Date("2000-09-22"),
         location: "Mumbai, Maharashtra",
         phone: { countryCode: "+91", phoneNumber: "9876543211" },
-        skills: "React.js, Tailwind CSS, JavaScript, Redux, Next.js",
-        experience: { companyName: "PixelWeb Studio", year: 1 },
+        skills: "React.js, Tailwind CSS, JavaScript, Redux Toolkit, Next.js",
+        experience: { companyName: "PixelCraft Digital", year: 1 },
         avatar: {
           url: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
-          public_id: "seed_avatar_jane",
+          public_id: "seed_avatar_ananya",
         },
         resume: {
           url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-          public_id: "seed_resume_jane",
+          public_id: "seed_resume_ananya",
         },
         education: [
           {
             level: "Class XII",
-            institution: "Delhi Public School",
-            board: "CBSE",
+            institution: "St. Xavier's Junior College, Mumbai",
+            board: "HSC",
             startDate: new Date("2016-04-01"),
             endDate: new Date("2018-03-31"),
             percentage: 91.0,
           },
           {
             level: "Graduation",
-            institution: "Mumbai University",
-            board: "MU",
+            institution: "Veermata Jijabai Technological Institute (VJTI), Mumbai",
+            board: "Mumbai University",
             startDate: new Date("2018-07-01"),
             endDate: new Date("2022-06-30"),
             percentage: 84.0,
@@ -297,29 +297,29 @@ const seedDatabase = async () => {
         role: "user",
       },
       {
-        firstname: "Alex",
-        lastname: "Chen",
-        email: "alex.chen@example.com",
+        firstname: "Aditya",
+        lastname: "Verma",
+        email: "aditya.verma@example.com",
         password: userPasswordHash,
         domain: "AI/ML",
         gender: "male",
         dob: new Date("1996-11-04"),
-        location: "Bengaluru, Karnataka",
+        location: "Hyderabad, Telangana",
         phone: { countryCode: "+91", phoneNumber: "9876543212" },
         skills: "Python, PyTorch, HuggingFace, NLP, LLMs, Docker, LangChain",
-        experience: { companyName: "Cognitive Labs", year: 3 },
+        experience: { companyName: "NeuralEdge Systems", year: 3 },
         avatar: {
           url: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=150&auto=format&fit=crop&q=80",
-          public_id: "seed_avatar_alex",
+          public_id: "seed_avatar_aditya",
         },
         resume: {
           url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-          public_id: "seed_resume_alex",
+          public_id: "seed_resume_aditya",
         },
         education: [
           {
             level: "Graduation",
-            institution: "Indian Institute of Technology",
+            institution: "Indian Institute of Technology (IIT Hyderabad)",
             board: "Autonomous",
             startDate: new Date("2014-08-01"),
             endDate: new Date("2018-05-31"),
@@ -327,7 +327,7 @@ const seedDatabase = async () => {
           },
           {
             level: "Post Graduation",
-            institution: "Indian Institute of Science",
+            institution: "Indian Institute of Science (IISc Bangalore)",
             board: "IISc",
             startDate: new Date("2018-08-01"),
             endDate: new Date("2020-05-31"),
@@ -339,29 +339,29 @@ const seedDatabase = async () => {
         role: "user",
       },
       {
-        firstname: "Sarah",
-        lastname: "Jenkins",
-        email: "sarah.jenkins@example.com",
+        firstname: "Sneha",
+        lastname: "Reddy",
+        email: "sneha.reddy@example.com",
         password: userPasswordHash,
         domain: "UI/UX",
         gender: "female",
         dob: new Date("1999-03-18"),
         location: "Pune, Maharashtra",
         phone: { countryCode: "+91", phoneNumber: "9876543213" },
-        skills: "Figma, Adobe XD, Wireframing, User Research, Prototyping",
-        experience: { companyName: "Creative UX Co.", year: 2 },
+        skills: "Figma, Adobe XD, Wireframing, User Research, Prototyping, Design Systems",
+        experience: { companyName: "DesignSprint Studio", year: 2 },
         avatar: {
           url: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80",
-          public_id: "seed_avatar_sarah",
+          public_id: "seed_avatar_sneha",
         },
         resume: {
           url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-          public_id: "seed_resume_sarah",
+          public_id: "seed_resume_sneha",
         },
         education: [
           {
             level: "Graduation",
-            institution: "National Institute of Design",
+            institution: "National Institute of Design (NID Ahmedabad)",
             board: "NID",
             startDate: new Date("2017-07-01"),
             endDate: new Date("2021-06-30"),
@@ -382,7 +382,7 @@ const seedDatabase = async () => {
         dob: new Date("2001-08-10"),
         location: "New Delhi, Delhi",
         phone: { countryCode: "+91", phoneNumber: "9876543214" },
-        skills: "Python, SQL, Pandas, PowerBI, Tableau, Statistics",
+        skills: "Python, SQL, Pandas, PowerBI, Tableau, Statistics, Excel",
         experience: { companyName: "Insight Analytics", year: 0 },
         avatar: {
           url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
@@ -395,7 +395,7 @@ const seedDatabase = async () => {
         education: [
           {
             level: "Class XII",
-            institution: "Modern School",
+            institution: "Modern School, Barakhamba Road",
             board: "CBSE",
             startDate: new Date("2017-04-01"),
             endDate: new Date("2019-03-31"),
@@ -403,7 +403,7 @@ const seedDatabase = async () => {
           },
           {
             level: "Graduation",
-            institution: "Delhi University",
+            institution: "Delhi University (Hansraj College)",
             board: "DU",
             startDate: new Date("2019-08-01"),
             endDate: new Date("2023-05-31"),
@@ -425,7 +425,7 @@ const seedDatabase = async () => {
         location: "Ahmedabad, Gujarat",
         phone: { countryCode: "+91", phoneNumber: "9876543215" },
         skills: "Flutter, React Native, Dart, Firebase, REST APIs, Git",
-        experience: { companyName: "AppCrafters Inc.", year: 2 },
+        experience: { companyName: "AppCrafters Tech", year: 2 },
         avatar: {
           url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
           public_id: "seed_avatar_priya",
@@ -436,8 +436,16 @@ const seedDatabase = async () => {
         },
         education: [
           {
+            level: "Class XII",
+            institution: "Navrachana Higher Secondary School, Vadodara",
+            board: "GSEB",
+            startDate: new Date("2013-06-01"),
+            endDate: new Date("2015-05-31"),
+            percentage: 83.5,
+          },
+          {
             level: "Graduation",
-            institution: "Gujarat Technological University",
+            institution: "Gujarat Technological University (GTU)",
             board: "GTU",
             startDate: new Date("2015-08-01"),
             endDate: new Date("2019-05-31"),
@@ -464,32 +472,32 @@ const seedDatabase = async () => {
     console.log("\n📝 Seeding Job Applications...");
     const applicationsData = [
       {
-        user: userMap["john.doe@example.com"]._id,
+        user: userMap["arjun.mehta@example.com"]._id,
         job: jobMap["Senior Full Stack Engineer"]._id,
         status: "Scheduled",
       },
       {
-        user: userMap["john.doe@example.com"]._id,
+        user: userMap["arjun.mehta@example.com"]._id,
         job: jobMap["Frontend Developer"]._id,
         status: "Pending",
       },
       {
-        user: userMap["jane.smith@example.com"]._id,
+        user: userMap["ananya.iyer@example.com"]._id,
         job: jobMap["Frontend Developer"]._id,
         status: "Scheduled",
       },
       {
-        user: userMap["jane.smith@example.com"]._id,
+        user: userMap["ananya.iyer@example.com"]._id,
         job: jobMap["Senior Full Stack Engineer"]._id,
         status: "Rejected",
       },
       {
-        user: userMap["alex.chen@example.com"]._id,
+        user: userMap["aditya.verma@example.com"]._id,
         job: jobMap["AI / ML Research Engineer"]._id,
         status: "Hired",
       },
       {
-        user: userMap["sarah.jenkins@example.com"]._id,
+        user: userMap["sneha.reddy@example.com"]._id,
         job: jobMap["UI / UX Designer"]._id,
         status: "Shortlisted",
       },
@@ -537,37 +545,37 @@ const seedDatabase = async () => {
     console.log("\n📅 Seeding Interviews...");
     const interviewsData = [
       {
-        applicant: userMap["john.doe@example.com"]._id,
+        applicant: userMap["arjun.mehta@example.com"]._id,
         job: jobMap["Senior Full Stack Engineer"]._id,
         scheduledBy: primaryAdmin._id,
         interviewDate: futureDate(2),
         mode: "Online",
-        meetingLink: "https://meet.google.com/ver-idia-fst",
+        meetingLink: "https://meet.google.com/job-app-fst",
         status: "Scheduled",
         remarks: "Round 1: System architecture and full stack technical challenge.",
       },
       {
-        applicant: userMap["jane.smith@example.com"]._id,
+        applicant: userMap["ananya.iyer@example.com"]._id,
         job: jobMap["Frontend Developer"]._id,
         scheduledBy: hrAdmin._id,
         interviewDate: futureDate(4),
         mode: "Online",
-        meetingLink: "https://meet.google.com/ver-idia-fed",
+        meetingLink: "https://meet.google.com/job-app-fed",
         status: "Scheduled",
         remarks: "Round 1: React component design & state management review.",
       },
       {
-        applicant: userMap["alex.chen@example.com"]._id,
+        applicant: userMap["aditya.verma@example.com"]._id,
         job: jobMap["AI / ML Research Engineer"]._id,
         scheduledBy: primaryAdmin._id,
         interviewDate: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000), // 7 days ago
         mode: "Offline",
-        location: "job-app AI Labs, Tower 3, Floor 5, Tech Park, Bengaluru",
+        location: "job-app AI Labs, Tower 3, Floor 5, Manyata Tech Park, Bengaluru",
         status: "Selected",
         remarks: "Candidate performed exceptionally well across ML system design and model quantization.",
       },
       {
-        applicant: userMap["jane.smith@example.com"]._id,
+        applicant: userMap["ananya.iyer@example.com"]._id,
         job: jobMap["Senior Full Stack Engineer"]._id,
         scheduledBy: hrAdmin._id,
         interviewDate: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000), // 10 days ago
@@ -585,22 +593,22 @@ const seedDatabase = async () => {
     console.log("\n📧 Seeding Audit Logs (EmailLog & Otp)...");
     await EmailLog.insertMany([
       {
-        to: "john.doe@example.com",
+        to: "arjun.mehta@example.com",
         subject: "We’ve Received Your Application for Senior Full Stack Engineer at job-app",
         status: "sent",
       },
       {
-        to: "john.doe@example.com",
+        to: "arjun.mehta@example.com",
         subject: "Interview Scheduled timing - Senior Full Stack Engineer",
         status: "sent",
       },
       {
-        to: "jane.smith@example.com",
+        to: "ananya.iyer@example.com",
         subject: "Interview Scheduled timing - Frontend Developer",
         status: "sent",
       },
       {
-        to: "jane.smith@example.com",
+        to: "ananya.iyer@example.com",
         subject: "Update on Your Application - Senior Full Stack Engineer",
         status: "sent",
       },
@@ -608,7 +616,7 @@ const seedDatabase = async () => {
 
     await Otp.insertMany([
       {
-        value: "john.doe@example.com",
+        value: "arjun.mehta@example.com",
         otp: "654321",
         expiresAt: new Date(Date.now() + 2 * 60 * 1000),
         verified: true,
@@ -637,16 +645,16 @@ const seedDatabase = async () => {
 
     console.log("\n🔑 Test Credentials:");
     console.log("   ------------------------------------------------------------");
-    console.log("   ROLE       EMAIL                      PASSWORD");
+    console.log("   ROLE       EMAIL                       PASSWORD");
     console.log("   ------------------------------------------------------------");
-    console.log("   Admin      admin@jobapp.com           AdminPassword123!");
-    console.log("   Admin(HR)  hr@jobapp.com              AdminPassword123!");
-    console.log("   Candidate  john.doe@example.com       UserPassword123!");
-    console.log("   Candidate  jane.smith@example.com     UserPassword123!");
-    console.log("   Candidate  alex.chen@example.com      UserPassword123!");
-    console.log("   Candidate  sarah.jenkins@example.com  UserPassword123!");
-    console.log("   Candidate  rahul.sharma@example.com   UserPassword123!");
-    console.log("   Candidate  priya.patel@example.com    UserPassword123!");
+    console.log("   Admin      admin@jobapp.com            AdminPassword123!");
+    console.log("   Admin(HR)  hr@jobapp.com               AdminPassword123!");
+    console.log("   Candidate  arjun.mehta@example.com     UserPassword123!");
+    console.log("   Candidate  ananya.iyer@example.com     UserPassword123!");
+    console.log("   Candidate  aditya.verma@example.com    UserPassword123!");
+    console.log("   Candidate  sneha.reddy@example.com     UserPassword123!");
+    console.log("   Candidate  rahul.sharma@example.com    UserPassword123!");
+    console.log("   Candidate  priya.patel@example.com     UserPassword123!");
     console.log("   ------------------------------------------------------------\n");
 
     await mongoose.connection.close();

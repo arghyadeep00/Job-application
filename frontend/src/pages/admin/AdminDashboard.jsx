@@ -1,140 +1,207 @@
+import { Link, useNavigate } from "react-router-dom";
 import DashboardLayout from "../../layouts/DashboardLayout";
 import {
   Users,
-  CheckCircle,
+  CheckCircle2,
   XCircle,
-  LayoutGrid,
-  Hourglass,
+  Clock,
+  FolderKanban,
+  ArrowRight,
+  TrendingUp,
+  FileText,
+  Calendar,
+  Sparkles
 } from "lucide-react";
 import { useAdminGlobal } from "../../context/AdminContext";
-import { useEffect, useState } from "react";
 import statusColor from "../../styles/statusColor";
-import { useNavigate } from "react-router-dom";
-import api from "../../services/api";
-import toast from "react-hot-toast";
 
 const AdminDashboard = () => {
-  // global context
   const {
-    recentApplications,
-    totalApplications,
-    pending,
-    shortlisted,
-    rejected,
+    recentApplications = [],
+    totalApplications = 0,
+    pending = 0,
+    shortlisted = 0,
+    rejected = 0,
   } = useAdminGlobal();
 
   const navigate = useNavigate();
 
   return (
     <DashboardLayout>
-      {/* Page Title */}
-      <div className="mb-6">
-        <h1 className="text-2xl font-semibold text-gray-800">
-          Admin Dashboard
-        </h1>
-        <p className="text-sm text-gray-500">
-          Overview of candidate applications
-        </p>
-      </div>
-
-      {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-        <div className="bg-white p-5 rounded-xl shadow-sm bosm">
-          <div className="flex items-center gap-3">
-            <LayoutGrid className="text-purple-600" />
-            <div>
-              <p className="text-sm text-gray-500">Total Applications</p>
-              <h2 className="text-xl font-semibold">{totalApplications}</h2>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white p-5 rounded-xl shadow-sm">
-          <div className="flex items-center gap-3">
-            <Hourglass className="text-blue-600" />
-            <div>
-              <p className="text-sm text-gray-500">Pending</p>
-              <h2 className="text-xl font-semibold">{pending}</h2>
-            </div>
-          </div>
-        </div>
-        <div className="bg-white p-5 rounded-xl shadow-sm">
-          <div className="flex items-center gap-3">
-            <CheckCircle className="text-green-600" />
-            <div>
-              <p className="text-sm text-gray-500">Shortlisted</p>
-              <h2 className="text-xl font-semibold">{shortlisted}</h2>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white p-5 rounded-xl shadow-sm">
-          <div className="flex items-center gap-3">
-            <XCircle className="text-red-500" />
-            <div>
-              <p className="text-sm text-gray-500">Rejected</p>
-              <h2 className="text-xl font-semibold">{rejected}</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Recent Applications Section */}
-      <div className="mt-8 bg-white rounded-xl shadow-sm p-5">
-        <h2 className="text-lg font-semibold mb-4">Recent Applications</h2>
-
-        <div className="overflow-x-auto">
-          {recentApplications.length == 0 ? (
-            <p className="text-center roboto-flex">
-              NO APPLICATION FOUND LAST 5 DAYS
+      <div className="space-y-8">
+        {/* Page Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-800 tracking-tight">
+              Recruitment Dashboard
+            </h1>
+            <p className="text-sm text-slate-500 mt-1">
+              Overview of hiring pipeline, candidate volume, and recent activities
             </p>
-          ) : (
-            <table className="w-full text-sm">
-              <thead className="border-b border-gray-300">
-                <tr className="text-left text-gray-700 ">
-                  <th className="pb-3">Job Title</th>
-                  <th className="pb-3">Name</th>
-                  <th className="pb-3">Email</th>
-                  <th className="pb-3">Domin</th>
-                  <th className="pb-3">Status</th>
-                  <th className="pb-3">Apply Date</th>
-                </tr>
-              </thead>
+          </div>
 
-              <tbody>
-                {recentApplications.map((item) => (
-                  <tr
-                    className="hover:bg-blue-50 cursor-pointer odd:bg-white even:bg-gray-50"
-                    key={item._id}
-                    onClick={() =>
-                      navigate(`/admin/user-profile/${item.user._id}`)
-                    }
-                  >
-                    <td className="py-3 text-blue-700 font-bold">
-                      {item?.job?.title}
-                    </td>
-                    <td className="py-3">{item?.user?.firstname} {item?.user?.middlename} {item?.user?.lastname}</td>
-                    <td className="py-3">{item?.user?.email}</td>
-                    <td>{item?.user?.domain}</td>
-                    <td>
-                      <span
-                        className={`px-2 py-1 text-xs rounded ${statusColor[item?.status]}`}
-                      >
-                        {item?.status}
-                      </span>
-                    </td>
-                    <td>
-                      {new Date(item?.createdAt).toLocaleDateString("en-IN", {
-                        day: "2-digit",
-                        month: "long",
-                        year: "numeric",
-                      })}
-                    </td>
+          <div className="flex items-center gap-3">
+            <Link
+              to="/admin/job-management"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-semibold text-xs shadow-sm transition"
+            >
+              Post New Job
+            </Link>
+            <Link
+              to="/admin/applications"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs border border-slate-200 transition shadow-2xs"
+            >
+              Review Pipeline
+            </Link>
+          </div>
+        </div>
+
+        {/* Stats Cards Grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="bg-white p-5 rounded-2xl border border-slate-100 shadow-xs hover:shadow-md transition">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Received</span>
+              <div className="p-2.5 rounded-xl bg-purple-50 text-purple-600">
+                <FolderKanban size={18} />
+              </div>
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-800 mt-2">{totalApplications}</h3>
+            <p className="text-xs text-slate-500 mt-1">Across all active postings</p>
+          </div>
+
+          <div className="bg-white p-5 rounded-2xl border border-slate-100 shadow-xs hover:shadow-md transition">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Under Review</span>
+              <div className="p-2.5 rounded-xl bg-amber-50 text-amber-600">
+                <Clock size={18} />
+              </div>
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-800 mt-2">{pending}</h3>
+            <p className="text-xs text-slate-500 mt-1">Awaiting status decision</p>
+          </div>
+
+          <div className="bg-white p-5 rounded-2xl border border-slate-100 shadow-xs hover:shadow-md transition">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Shortlisted</span>
+              <div className="p-2.5 rounded-xl bg-sky-50 text-sky-600">
+                <CheckCircle2 size={18} />
+              </div>
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-800 mt-2">{shortlisted}</h3>
+            <p className="text-xs text-slate-500 mt-1">Ready for interview stage</p>
+          </div>
+
+          <div className="bg-white p-5 rounded-2xl border border-slate-100 shadow-xs hover:shadow-md transition">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Rejected</span>
+              <div className="p-2.5 rounded-xl bg-rose-50 text-rose-600">
+                <XCircle size={18} />
+              </div>
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-800 mt-2">{rejected}</h3>
+            <p className="text-xs text-slate-500 mt-1">Archive notifications sent</p>
+          </div>
+        </div>
+
+        {/* Recent Applications Section */}
+        <div className="bg-white rounded-2xl border border-slate-100 shadow-xs overflow-hidden">
+          <div className="p-6 border-b border-slate-100 flex items-center justify-between">
+            <div>
+              <h2 className="text-lg font-bold text-slate-800">Recent Applications (Last 5 Days)</h2>
+              <p className="text-xs text-slate-500 mt-0.5">Click any candidate row to view their complete dossier</p>
+            </div>
+
+            <Link
+              to="/admin/applications"
+              className="text-xs font-semibold text-purple-600 hover:text-purple-800 flex items-center gap-1"
+            >
+              View Full List <ArrowRight size={13} />
+            </Link>
+          </div>
+
+          <div className="overflow-x-auto">
+            {recentApplications.length === 0 ? (
+              <div className="p-12 text-center text-slate-400">
+                <FileText size={36} className="mx-auto text-slate-300 mb-2" />
+                <p className="font-semibold text-slate-700">No applications received in the last 5 days</p>
+                <p className="text-xs text-slate-400 mt-1">New candidate submissions will automatically appear here</p>
+              </div>
+            ) : (
+              <table className="w-full text-left text-sm">
+                <thead className="bg-slate-50 text-slate-500 text-xs font-semibold uppercase tracking-wider border-b border-slate-100">
+                  <tr>
+                    <th className="px-6 py-4">Candidate</th>
+                    <th className="px-6 py-4">Applied Position</th>
+                    <th className="px-6 py-4">Domain Track</th>
+                    <th className="px-6 py-4">Status</th>
+                    <th className="px-6 py-4">Submission Date</th>
+                    <th className="px-6 py-4 text-right">Action</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
+                </thead>
+
+                <tbody className="divide-y divide-slate-100">
+                  {recentApplications.map((item) => {
+                    const fullName = [item?.user?.firstname, item?.user?.middlename, item?.user?.lastname]
+                      .filter(Boolean)
+                      .join(" ") || "Candidate";
+                    const initial = item?.user?.firstname?.charAt(0) || "C";
+
+                    return (
+                      <tr
+                        key={item._id}
+                        onClick={() => navigate(`/admin/user-profile/${item?.user?._id}`)}
+                        className="hover:bg-purple-50/40 cursor-pointer transition"
+                      >
+                        <td className="px-6 py-4">
+                          <div className="flex items-center gap-3">
+                            <div className="w-9 h-9 rounded-full bg-purple-100 text-purple-700 font-bold text-xs flex items-center justify-center shrink-0">
+                              {initial}
+                            </div>
+                            <div>
+                              <div className="font-semibold text-slate-800">{fullName}</div>
+                              <div className="text-xs text-slate-400">{item?.user?.email}</div>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td className="px-6 py-4">
+                          <span className="font-bold text-purple-700 text-xs sm:text-sm">
+                            {item?.job?.title || "Role Title"}
+                          </span>
+                        </td>
+
+                        <td className="px-6 py-4">
+                          <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-700">
+                            {item?.user?.domain || "General"}
+                          </span>
+                        </td>
+
+                        <td className="px-6 py-4">
+                          <span className={`inline-block px-3 py-1 text-xs rounded-full ${statusColor[item?.status]}`}>
+                            {item?.status}
+                          </span>
+                        </td>
+
+                        <td className="px-6 py-4 text-xs text-slate-500">
+                          {new Date(item?.createdAt).toLocaleDateString("en-IN", {
+                            day: "2-digit",
+                            month: "short",
+                            year: "numeric",
+                          })}
+                        </td>
+
+                        <td className="px-6 py-4 text-right">
+                          <span className="inline-flex items-center gap-1 text-xs font-semibold text-purple-600 group-hover:text-purple-800">
+                            Review <ArrowRight size={13} />
+                          </span>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            )}
+          </div>
         </div>
       </div>
     </DashboardLayout>
