@@ -1,0 +1,55 @@
+/* src/style.css */
+@import url("https://fonts.googleapis.com/css2?family=Borel&family=Roboto+Flex:opsz,wght,XOPQ,XTRA,YOPQ,YTDE,YTFI,YTLC,YTUC@8..144,100..1000,96,468,79,-203,738,514,712&family=Roboto:ital,wght@0,100..900;1,100..900&family=Tomorrow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Vend+Sans:ital,wght@0,300..700;1,300..700&display=swap");
+@import "tailwindcss";
+
+
+/* boox shadow */
+.primary-shadow {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  transition: box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.primary-shadow:hover {
+  transform: translateY(-6px);
+}
+
+.secondary-shadow {
+  transition: box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.secondary-shadow:hover {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  transform: translateY(-2px);
+}
+
+/* colors  */
+.primary-color {
+  color: rgb(130, 0, 219);
+}
+
+.primary-bg-color {
+  background-color: rgb(130, 0, 219);
+}
+
+/* fonts  */
+
+.robot {
+  font-family: "Roboto", sans-serif;
+}
+.vend-sans {
+  font-family: "Vend Sans", sans-serif;
+}
+.roboto-flex {
+  font-family: "Roboto Flex", sans-serif;
+}
+.tomorrow {
+  font-family: "Tomorrow", sans-serif;
+}
+.borel {
+  font-family: "Borel", cursive;
+}
+
+button{
+  cursor: pointer;
+}

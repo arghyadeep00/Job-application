@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Interview Scheduled</title>
+</head>
+
+<body style="margin:0;padding:0;background:#f3f4f6;font-family:Arial,Helvetica,sans-serif;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="padding:30px 0;">
+        <tr>
+            <td align="center">
+                <table width="620" cellpadding="0" cellspacing="0"
+                    style="background:#ffffff;border-radius:8px;overflow:hidden;box-shadow:0 6px 14px rgba(0,0,0,0.08);">
+
+
+                    <!-- Header -->
+                    <tr>
+                        <td style="background:#0f172a;color:#ffffff;padding:22px;text-align:center;">
+                            <h2 style="margin:0;">Interview Scheduled 🎯</h2>
+                            <p style="margin:6px 0 0;font-size:14px;">{{company}} Hiring Team</p>
+                        </td>
+                    </tr>
+
+                    <!-- Body -->
+                    <tr>
+                        <td style="padding:28px;color:#374151;font-size:15px;line-height:1.7;">
+                            <p>Hi <b>{{name}}</b>,</p>
+
+                            <p>
+                                We are pleased to inform you that your interview for the position of
+                                <b>{{role}}</b> at <b>{{company}}</b> has been scheduled.
+                            </p>
+
+                            <table width="100%" cellpadding="10" cellspacing="0"
+                                style="margin:18px 0;background:#f9fafb;border-radius:6px;">
+                                <tr>
+                                    <td><b>Date:</b></td>
+                                    <td>{{date}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Time:</b></td>
+                                    <td>{{time}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Mode:</b></td>
+                                    <td>{{mode}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Meeting Link / Address:</b></td>
+                                    <td>{{meetingLink}}</td>
+                                </tr>
+                            </table>
+
+                            <p>
+                                Please join the interview on time. If you face any issue or need to reschedule,
+                                kindly reply to this email.
+                            </p>
+
+                            <p style="margin-top:24px;">
+                                Best regards,<br />
+                                <b>{{company}} Hiring Team</b><br />
+                                {{companyEmail}}
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td style="background:#f3f4f6;padding:14px;text-align:center;font-size:12px;color:#6b7280;">
+                            © {{year}} {{company}}. All rights reserved.
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+        </tr>
+
+
+    </table>
+</body>
+
+</html>
