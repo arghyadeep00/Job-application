@@ -269,13 +269,13 @@ npm run seed
 
 ## ⚙️ Environment Configuration
 
-Create a `.env` file inside the `backend/` directory with the following variables:
+### Backend (`backend/.env`)
 
 ```env
 # Application Server
 PORT=3000
 NODE_ENV=development
-CLIENT_URL=http://localhost:5173
+FRONTEND_URL=http://localhost:5173
 
 # Security
 JWT_SECRET=your_super_secret_jwt_key_here
@@ -297,6 +297,14 @@ TWILIO_ACCOUNT_SID=your_account_sid
 TWILIO_AUTH_TOKEN=your_auth_token
 TWILIO_VERIFY_SERVICE_SID=your_verify_sid
 TWILIO_PHONE_NUMBER=your_twilio_number
+```
+
+### Frontend (`frontend/.env`)
+
+```env
+# URL of your backend API (Required for Vite client requests)
+# In production (e.g. Vercel), set this in project Environment Variables:
+VITE_BACKEND_URL=http://localhost:3000
 ```
 
 ---

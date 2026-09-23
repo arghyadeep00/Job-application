@@ -22,7 +22,30 @@ conn();
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
+const defaultOrigins = ["http://localhost:5173", "http://localhost:3000"];
+const envOrigins = process.env.FRONTEND_URL
+  ? process.env.FRONTEND_URL.split(",").map((url) =>
+      url.trim().replace(/\/+$/, ""),
+    )
+  : [];
+const allowedOrigins = [...new Set([...defaultOrigins, ...envOrigins])];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      const cleanOrigin = origin.replace(/\/+$/, "");
+      if (
+        allowedOrigins.includes(cleanOrigin) ||
+        process.env.NODE_ENV !== "production"
+      ) {
+        return callback(null, true);
+      }
+      return callback(new Error(`CORS blocked for origin: ${origin}`));
+    },
+    credentials: true,
+  }),
+);
 
 app.use("/api/auth", authRoutes);
 app.use("/api/application", applicationRoutes);
