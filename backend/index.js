@@ -11,14 +11,14 @@ import conn from "./config/db.js";
 import jobRoutes from "./routes/jobRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import passwordRoute from "./routes/passwordRoutes.js";
-import interviewRoute from './routes/interviewRoutes.js'
+import interviewRoute from "./routes/interviewRoutes.js";
 
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-conn(); // db connection function
+conn();
 app.use(express.json());
 app.use(cookieParser());
 
@@ -30,7 +30,7 @@ app.use("/api/admin", adminRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api", otpRoutes);
 app.use("/api", jobRoutes);
-app.use("/api/interview",interviewRoute);
+app.use("/api/interview", interviewRoute);
 app.use("/api/forgot-password", passwordRoute);
 
 app.listen(port, () => {
